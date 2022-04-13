@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\CrawlController::class, 'index']);
+Route::get('/{id}', [\App\Http\Controllers\CrawlController::class, 'select']);

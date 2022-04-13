@@ -8,7 +8,14 @@ use Illuminate\Http\Request;
 class CrawlController extends Controller
 {
     public function index() {
-        $posts = Post::orderBy('id', 'DESC')->paginate(1);
-        return view('welcome', compact('posts'));
+        $post = Post::first();
+        $categories = Post::paginate(5);
+        return view('welcome', compact('post', 'categories'));
+    }
+
+    public function select($id) {
+        $post = Post::find($id);
+        $categories = Post::paginate(5);
+        return view('welcome', compact('post', 'categories'));
     }
 }

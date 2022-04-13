@@ -40,7 +40,7 @@ class ScrapePost extends Command
      */
     public function handle()
     {
-        $url = "https://dantri.com.vn/kinh-doanh/sri-lanka-tuyen-bo-vo-no-toan-bo-51-ty-usd-no-nuoc-ngoai-20220412160108862.htm";
+        $url = "https://dantri.com.vn/tam-long-nhan-ai/lay-lat-canh-song-cua-nhung-dua-tre-mo-coi-cha-trong-can-nha-sap-sap-20220408161206111.htm";
         $crawler = GoutteFacade::request('GET', $url);
         $title = $crawler->filter('h1.title-page')->each(function ($node) {
             return $node->text();
@@ -61,19 +61,5 @@ class ScrapePost extends Command
         $post->content = $content;
         $post->image = $image;
         $post->save();
-    //    $url = 'https://www.thegioididong.com/dtdd';
-    //    $crawler = GoutteFacade::request('GET', $url);
-    //    $crawler->filter('ul.listproduct > li.item')->each(function ($node) {
-    //            $name = $node->filter('h3')->text();
-    //            $price = $node->filter('.price')->text();
-    //            $image = $node->filter('.item-img > img')->attr('src');
-
-    //            $product = new Product;
-    //            $product->name = $name;
-    //            $product->price = $price;
-    //            $product->image = $image;
-    //            $product->save();
-    //        }
-    //    );
     }
 }
